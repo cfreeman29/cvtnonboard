@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cvtnonboard", "cvtnonboard\cvtnonboard.vbproj", "{D1269F12-F67C-40A2-A08A-D75E5E5E2C28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1269F12-F67C-40A2-A08A-D75E5E5E2C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1269F12-F67C-40A2-A08A-D75E5E5E2C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1269F12-F67C-40A2-A08A-D75E5E5E2C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1269F12-F67C-40A2-A08A-D75E5E5E2C28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69E4EA0E-D2B9-4E2D-A2CC-1A05C8B42070}
+	EndGlobalSection
+EndGlobal
