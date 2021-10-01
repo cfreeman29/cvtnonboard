@@ -1,4 +1,5 @@
-﻿Imports System.Text
+﻿Imports System.IO
+Imports System.Text
 
 Public Class Form1
     Dim dt As DataTable = New DataTable
@@ -99,5 +100,18 @@ Public Class Form1
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Process.Start("mailto: christopher.m.freeman37.ctr@army.mil?subject=Hello&body=")
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim first = firstname.Text
+        Dim last = lastname.Text
+        Dim rankbox = rank.Text
+        Dim edipibox = edipi.Text
+        Dim mosbox = mos.Text
+        File.AppendAllText("C:\Users\cfree\Documents\test.csv", Environment.NewLine + first + "," + last + "," + rankbox + "," + edipibox + "," + mosbox)
+        MsgBox("Student Added to Queue")
+        edipi.Clear()
+        firstname.Clear()
+        lastname.Clear()
     End Sub
 End Class
