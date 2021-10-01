@@ -103,15 +103,50 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim first = firstname.Text
-        Dim last = lastname.Text
-        Dim rankbox = rank.Text
-        Dim edipibox = edipi.Text
-        Dim mosbox = mos.Text
-        File.AppendAllText("C:\Users\cfree\Documents\test.csv", Environment.NewLine + first + "," + last + "," + rankbox + "," + edipibox + "," + mosbox)
-        MsgBox("Student Added to Queue")
-        edipi.Clear()
-        firstname.Clear()
-        lastname.Clear()
+        Dim validate As Integer
+        If String.IsNullOrEmpty(firstname.Text) Then
+            MsgBox("First Name is Empty")
+            lastname.Focus()
+        Else
+            validate += 1
+        End If
+        If String.IsNullOrEmpty(lastname.Text) Then
+            MsgBox("Last Name is Empty")
+            lastname.Focus()
+        Else
+            validate += 1
+        End If
+        If String.IsNullOrEmpty(edipi.Text) Then
+            MsgBox("EDIPI is Empty")
+            lastname.Focus()
+        Else
+            validate += 1
+        End If
+        If String.IsNullOrEmpty(rank.Text) Then
+            MsgBox("Rank is Empty")
+            lastname.Focus()
+        Else
+            validate += 1
+        End If
+        If String.IsNullOrEmpty(mos.Text) Then
+            MsgBox("MOS is Empty")
+            lastname.Focus()
+        Else
+            validate += 1
+        End If
+        If validate = 5 Then
+            Dim first = firstname.Text
+            Dim last = lastname.Text
+            Dim rankbox = rank.Text
+            Dim edipibox = edipi.Text
+            Dim mosbox = mos.Text
+            File.AppendAllText("C:\Users\cfree\Documents\test.csv", Environment.NewLine + first + "," + last + "," + rankbox + "," + edipibox + "," + mosbox)
+            MsgBox("Student Added to Queue")
+            edipi.Clear()
+            firstname.Clear()
+            lastname.Clear()
+        Else
+            MsgBox("Please fix values and try again.")
+        End If
     End Sub
 End Class
