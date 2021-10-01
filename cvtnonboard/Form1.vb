@@ -96,4 +96,8 @@ Public Class Form1
 
         Process.Start(url)
     End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Process.Start("mailto: christopher.m.freeman37.ctr@army.mil?subject=Hello&body=")
+    End Sub
 End Class
