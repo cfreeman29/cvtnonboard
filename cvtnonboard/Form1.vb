@@ -132,6 +132,12 @@ Public Class Form1
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Process.Start("mailto: christopher.m.freeman37.ctr@army.mil?subject=Hello&body=")
     End Sub
+    ''''''''Open Github Link''''''''
+    Private Sub Github_Click(sender As Object, e As EventArgs) Handles Github.Click
+        Dim url As String = "https://github.com/cfreeman29/cvtnonboard"
+
+        Process.Start(url)
+    End Sub
     ''''''''Add user to CSV''''''''
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim validate As Integer
@@ -224,8 +230,13 @@ Public Class Form1
         Next
         If statuscode = 2 Then
             status.Visible = True
-            status.BackColor = Color.Yellow
+            status.ForeColor = Color.Yellow
             status.Text = "User is provisioning..."
+        End If
+        If statuscode = 0 Then
+            status.Visible = True
+            status.ForeColor = Color.Red
+            status.Text = " User not found."
         End If
     End Sub
     ''''''''Bulk import user to master list''''''''

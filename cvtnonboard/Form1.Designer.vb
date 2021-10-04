@@ -33,12 +33,14 @@ Partial Class Form1
         Me.Label10 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.status = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.statuscheck = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.importing = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -59,8 +61,7 @@ Partial Class Form1
         Me.firstname = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.importing = New System.Windows.Forms.Label()
-        Me.status = New System.Windows.Forms.Label()
+        Me.Github = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Credits.SuspendLayout()
@@ -87,6 +88,7 @@ Partial Class Form1
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Github)
         Me.GroupBox5.Controls.Add(Me.Button8)
         Me.GroupBox5.Controls.Add(Me.Button7)
         Me.GroupBox5.Controls.Add(Me.Button6)
@@ -119,7 +121,7 @@ Partial Class Form1
         '
         Me.Button6.Location = New System.Drawing.Point(6, 58)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(156, 23)
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
         Me.Button6.TabIndex = 1
         Me.Button6.Text = "Reload App"
         Me.Button6.UseVisualStyleBackColor = True
@@ -190,6 +192,16 @@ Partial Class Form1
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "User Status"
         '
+        'status
+        '
+        Me.status.AutoSize = True
+        Me.status.Location = New System.Drawing.Point(92, 68)
+        Me.status.Name = "status"
+        Me.status.Size = New System.Drawing.Size(35, 13)
+        Me.status.TabIndex = 5
+        Me.status.Text = "status"
+        Me.status.Visible = False
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -247,6 +259,16 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Bulk Import Students"
+        '
+        'importing
+        '
+        Me.importing.AutoSize = True
+        Me.importing.Location = New System.Drawing.Point(319, 36)
+        Me.importing.Name = "importing"
+        Me.importing.Size = New System.Drawing.Size(59, 13)
+        Me.importing.TabIndex = 6
+        Me.importing.Text = "Importing..."
+        Me.importing.Visible = False
         '
         'ProgressBar1
         '
@@ -427,25 +449,14 @@ Partial Class Form1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'importing
+        'Github
         '
-        Me.importing.AutoSize = True
-        Me.importing.Location = New System.Drawing.Point(319, 36)
-        Me.importing.Name = "importing"
-        Me.importing.Size = New System.Drawing.Size(59, 13)
-        Me.importing.TabIndex = 6
-        Me.importing.Text = "Importing..."
-        Me.importing.Visible = False
-        '
-        'status
-        '
-        Me.status.AutoSize = True
-        Me.status.Location = New System.Drawing.Point(92, 68)
-        Me.status.Name = "status"
-        Me.status.Size = New System.Drawing.Size(35, 13)
-        Me.status.TabIndex = 5
-        Me.status.Text = "status"
-        Me.status.Visible = False
+        Me.Github.Location = New System.Drawing.Point(87, 58)
+        Me.Github.Name = "Github"
+        Me.Github.Size = New System.Drawing.Size(75, 23)
+        Me.Github.TabIndex = 5
+        Me.Github.Text = "Github"
+        Me.Github.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -516,4 +527,5 @@ Partial Class Form1
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents importing As Label
     Friend WithEvents status As Label
+    Friend WithEvents Github As Button
 End Class
