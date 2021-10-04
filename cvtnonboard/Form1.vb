@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Configuration
+Imports System.DirectoryServices
 
 Public Class Form1
 
