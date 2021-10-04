@@ -4,6 +4,7 @@ Imports System.Text
 Public Class Form1
     Dim dt As DataTable = New DataTable
     Dim fName As String = ""
+    Dim usernum As Integer
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
 
     End Sub
@@ -178,7 +179,9 @@ Public Class Form1
         If String.IsNullOrEmpty(fName) Then
             MsgBox("Please choose a file and try again.")
         Else
+            usernum = 0
             For Each dr As DataRow In dt.Rows
+                usernum += 1
                 Dim str1 As String = dr(0).ToString()
                 Dim str2 As String = dr(1).ToString()
                 Dim str3 As String = dr(2).ToString()
@@ -186,6 +189,10 @@ Public Class Form1
                 Dim str5 As String = dr(4).ToString()
                 File.AppendAllText("C:\Users\cfree\Documents\master.csv", Environment.NewLine + str1 + "," + str2 + "," + str3 + "," + str4 + "," + str5)
             Next
+            Dim total As String
+            total = usernum.ToString()
+            MsgBox(total + " users have been added successfully.")
+            dt.Clear()
         End If
     End Sub
 End Class
