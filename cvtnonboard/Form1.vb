@@ -3,6 +3,7 @@ Imports System.Text
 
 Public Class Form1
     Dim dt As DataTable = New DataTable
+    Dim fName As String = ""
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
 
     End Sub
@@ -57,26 +58,41 @@ Public Class Form1
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If (OpenFileDialog1.ShowDialog() = DialogResult.OK) Then
             TextBox4.Text = OpenFileDialog1.FileName
-            Dim fName As String = ""
             fName = OpenFileDialog1.FileName
             Dim TextLine As String = ""
             Dim SplitLine() As String
 
             If System.IO.File.Exists(fName) = True Then
+                dt.Clear()
                 Dim objReader As New System.IO.StreamReader(fName, Encoding.ASCII)
                 Dim index As Integer = 0
                 Do While objReader.Peek() <> -1
                     If index > 0 Then
                         TextLine = objReader.ReadLine()
                         SplitLine = Split(TextLine, ",")
-                        dt.Columns.Add("firstname", GetType(String))
-                        dt.Columns.Add("lastname", GetType(String))
-                        dt.Columns.Add("rank", GetType(String))
-                        dt.Columns.Add("edipi", GetType(String))
-                        dt.Columns.Add("mos", GetType(String))
+                        If dt.Columns.Contains("firstname") Then
+                        Else
+                            dt.Columns.Add("firstname", GetType(String))
+                        End If
+                        If dt.Columns.Contains("lastname") Then
+                        Else
+                            dt.Columns.Add("lastname", GetType(String))
+                        End If
+                        If dt.Columns.Contains("rank") Then
+                        Else
+                            dt.Columns.Add("rank", GetType(String))
+                        End If
+                        If dt.Columns.Contains("edipi") Then
+                        Else
+                            dt.Columns.Add("edipi", GetType(String))
+                        End If
+                        If dt.Columns.Contains("mos") Then
+                        Else
+                            dt.Columns.Add("mos", GetType(String))
+                        End If
                         dt.Rows.Add(SplitLine)
-                    Else
-                        TextLine = objReader.ReadLine()
+                        Else
+                            TextLine = objReader.ReadLine()
                     End If
                     index = index + 1
                 Loop
@@ -140,7 +156,7 @@ Public Class Form1
             Dim rankbox = rank.Text
             Dim edipibox = edipi.Text
             Dim mosbox = mos.Text
-            File.AppendAllText("C:\Users\cfree\Documents\test.csv", Environment.NewLine + first + "," + last + "," + rankbox + "," + edipibox + "," + mosbox)
+            File.AppendAllText("C:\Users\cfree\Documents\master.csv", Environment.NewLine + first + "," + last + "," + rankbox + "," + edipibox + "," + mosbox)
             MsgBox("Student Added to Queue")
             edipi.Clear()
             firstname.Clear()
@@ -156,5 +172,20 @@ Public Class Form1
 
     Private Sub statuscheck_TextChanged(sender As Object, e As EventArgs) Handles statuscheck.TextChanged
 
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If String.IsNullOrEmpty(fName) Then
+            MsgBox("Please choose a file and try again.")
+        Else
+            For Each dr As DataRow In dt.Rows
+                Dim str1 As String = dr(0).ToString()
+                Dim str2 As String = dr(1).ToString()
+                Dim str3 As String = dr(2).ToString()
+                Dim str4 As String = dr(3).ToString()
+                Dim str5 As String = dr(4).ToString()
+                File.AppendAllText("C:\Users\cfree\Documents\master.csv", Environment.NewLine + str1 + "," + str2 + "," + str3 + "," + str4 + "," + str5)
+            Next
+        End If
     End Sub
 End Class
