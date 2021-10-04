@@ -39,6 +39,7 @@ Partial Class Form1
         Me.statuscheck = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -58,6 +59,7 @@ Partial Class Form1
         Me.firstname = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.importing = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Credits.SuspendLayout()
@@ -230,6 +232,8 @@ Partial Class Form1
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.importing)
+        Me.GroupBox2.Controls.Add(Me.ProgressBar1)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
         Me.GroupBox2.Controls.Add(Me.Button3)
         Me.GroupBox2.Controls.Add(Me.Button2)
@@ -241,6 +245,14 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Bulk Import Students"
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(65, 55)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(193, 10)
+        Me.ProgressBar1.TabIndex = 5
+        Me.ProgressBar1.Visible = False
         '
         'GroupBox3
         '
@@ -413,6 +425,16 @@ Partial Class Form1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'importing
+        '
+        Me.importing.AutoSize = True
+        Me.importing.Location = New System.Drawing.Point(319, 36)
+        Me.importing.Name = "importing"
+        Me.importing.Size = New System.Drawing.Size(59, 13)
+        Me.importing.TabIndex = 6
+        Me.importing.Text = "Importing..."
+        Me.importing.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -479,4 +501,6 @@ Partial Class Form1
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents importing As Label
 End Class

@@ -1,10 +1,12 @@
 ﻿Imports System.IO
 Imports System.Text
+Imports System.Configuration
 
 Public Class Form1
     Dim dt As DataTable = New DataTable
     Dim fName As String = ""
     Dim usernum As Integer
+    Dim i As Integer
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
 
     End Sub
@@ -64,6 +66,7 @@ Public Class Form1
             Dim SplitLine() As String
 
             If System.IO.File.Exists(fName) = True Then
+                importing.Visible = True
                 dt.Clear()
                 Dim objReader As New System.IO.StreamReader(fName, Encoding.ASCII)
                 Dim index As Integer = 0
@@ -92,12 +95,15 @@ Public Class Form1
                             dt.Columns.Add("mos", GetType(String))
                         End If
                         dt.Rows.Add(SplitLine)
-                        Else
-                            TextLine = objReader.ReadLine()
+                        i = +1
+                    Else
+                        TextLine = objReader.ReadLine()
                     End If
                     index = index + 1
                 Loop
+                importing.Visible = False
                 DataGridView1.DataSource = dt
+                MsgBox("Import Complete")
             Else
                 MsgBox("File Does Not Exist")
             End If
@@ -179,8 +185,14 @@ Public Class Form1
         If String.IsNullOrEmpty(fName) Then
             MsgBox("Please choose a file and try again.")
         Else
+            ProgressBar1.Visible = True
+            Dim i As Integer
+            ProgressBar1.Minimum = 0
+            ProgressBar1.Maximum = dt.Rows.Count
+            ProgressBar1.Value = i
             usernum = 0
             For Each dr As DataRow In dt.Rows
+                i += 1
                 usernum += 1
                 Dim str1 As String = dr(0).ToString()
                 Dim str2 As String = dr(1).ToString()
@@ -188,7 +200,11 @@ Public Class Form1
                 Dim str4 As String = dr(3).ToString()
                 Dim str5 As String = dr(4).ToString()
                 File.AppendAllText("C:\Users\cfree\Documents\master.csv", Environment.NewLine + str1 + "," + str2 + "," + str3 + "," + str4 + "," + str5)
+                If i > ProgressBar1.Maximum Then
+                    i = ProgressBar1.Maximum
+                End If
             Next
+            ProgressBar1.Visible = False
             Dim total As String
             total = usernum.ToString()
             MsgBox(total + " users have been added successfully.")
