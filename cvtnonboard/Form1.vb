@@ -3,6 +3,8 @@ Imports System.Text
 Imports System.Configuration
 
 Public Class Form1
+
+    ''''''''Variable Declaration'''''''''''''''
     Dim dt As DataTable = New DataTable
     Dim dtmaster As DataTable = New DataTable
     Dim fName As String = ""
@@ -12,9 +14,8 @@ Public Class Form1
     Dim TextLine As String = ""
     Dim SplitLine() As String
     Dim statuscode As Integer
-    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
 
-    End Sub
+    ''''''''Input Validation Function for EDIPI textbox''''''''
     Private Sub Checkedipi(edipival As String)
         If Not edipival.Length = 16 Then
             edipi.Clear()
@@ -29,12 +30,14 @@ Public Class Form1
         Else
         End If
     End Sub
+    ''''''''Input Validation for EDIPI textbox upon leaving''''''''
     Private Sub Edipi_Leave(sender As Object, e As EventArgs) Handles edipi.Leave
         Checkedipi(edipi.Text)
     End Sub
     Private Sub Statuscheck_Leave(sender As Object, e As EventArgs) Handles statuscheck.Leave
         Checkstatusedipi(statuscheck.Text)
     End Sub
+    ''''''''Input Validation for only number keys''''''''
     Private Sub Statuscheck_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles statuscheck.KeyPress
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = ChrW(Keys.Back) Then
             e.Handled = True
@@ -45,6 +48,7 @@ Public Class Form1
             e.Handled = True
         End If
     End Sub
+    ''''''''Input Validation for only alpha characters''''''''
     Private Sub Firstname_KeyPress(sender As Object, e As KeyPressEventArgs) Handles firstname.KeyPress
         If Not (Asc(e.KeyChar) = 8) Then
             Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
@@ -63,6 +67,7 @@ Public Class Form1
             End If
         End If
     End Sub
+    ''''''''Browse for CSV function''''''''
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If (OpenFileDialog1.ShowDialog() = DialogResult.OK) Then
             TextBox4.Text = OpenFileDialog1.FileName
@@ -113,21 +118,21 @@ Public Class Form1
 
         End If
     End Sub
-
+    ''''''''Restart Application''''''''
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Application.Restart()
     End Sub
-
+    ''''''''Open Teams Link''''''''
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim url As String = "https://dod.teams.microsoft.us/"
 
         Process.Start(url)
     End Sub
-
+    ''''''''Open Mailto link''''''''
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Process.Start("mailto: christopher.m.freeman37.ctr@army.mil?subject=Hello&body=")
     End Sub
-
+    ''''''''Add user to CSV''''''''
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim validate As Integer
         If String.IsNullOrEmpty(firstname.Text) Then
@@ -175,7 +180,7 @@ Public Class Form1
             MsgBox("Please fix values and try again.")
         End If
     End Sub
-
+    ''''''''Check Status of user''''''''
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim objReader As New System.IO.StreamReader(masterpath, Encoding.ASCII)
         Dim index As Integer = 0
@@ -223,11 +228,7 @@ Public Class Form1
             status.Text = "User is provisioning..."
         End If
     End Sub
-
-    Private Sub statuscheck_TextChanged(sender As Object, e As EventArgs) Handles statuscheck.TextChanged
-
-    End Sub
-
+    ''''''''Bulk import user to master list''''''''
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If String.IsNullOrEmpty(fName) Then
             MsgBox("Please choose a file and try again.")
@@ -257,9 +258,5 @@ Public Class Form1
             MsgBox(total + " users have been added successfully.")
             dt.Clear()
         End If
-    End Sub
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 End Class
