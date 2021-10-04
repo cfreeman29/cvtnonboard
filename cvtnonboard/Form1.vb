@@ -4,9 +4,14 @@ Imports System.Configuration
 
 Public Class Form1
     Dim dt As DataTable = New DataTable
+    Dim dtmaster As DataTable = New DataTable
     Dim fName As String = ""
     Dim usernum As Integer
     Dim i As Integer
+    Dim masterpath As String = "C:\Users\cfree\Documents\master.csv"
+    Dim TextLine As String = ""
+    Dim SplitLine() As String
+    Dim statuscode As Integer
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
 
     End Sub
@@ -62,8 +67,6 @@ Public Class Form1
         If (OpenFileDialog1.ShowDialog() = DialogResult.OK) Then
             TextBox4.Text = OpenFileDialog1.FileName
             fName = OpenFileDialog1.FileName
-            Dim TextLine As String = ""
-            Dim SplitLine() As String
 
             If System.IO.File.Exists(fName) = True Then
                 importing.Visible = True
@@ -174,7 +177,51 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim objReader As New System.IO.StreamReader(masterpath, Encoding.ASCII)
+        Dim index As Integer = 0
+        Do While objReader.Peek() <> -1
+            If index > 0 Then
+                TextLine = objReader.ReadLine()
+                SplitLine = Split(TextLine, ",")
+                If dtmaster.Columns.Contains("firstname") Then
+                Else
+                    dtmaster.Columns.Add("firstname", GetType(String))
+                End If
+                If dtmaster.Columns.Contains("lastname") Then
+                Else
+                    dtmaster.Columns.Add("lastname", GetType(String))
+                End If
+                If dtmaster.Columns.Contains("rank") Then
+                Else
+                    dtmaster.Columns.Add("rank", GetType(String))
+                End If
+                If dtmaster.Columns.Contains("edipi") Then
+                Else
+                    dtmaster.Columns.Add("edipi", GetType(String))
+                End If
+                If dtmaster.Columns.Contains("mos") Then
+                Else
+                    dtmaster.Columns.Add("mos", GetType(String))
+                End If
+                dtmaster.Rows.Add(SplitLine)
+            Else
+                TextLine = objReader.ReadLine()
+            End If
+            index = index + 1
+        Loop
+        For Each dr As DataRow In dtmaster.Rows
+            Dim str4 As String = dr(3).ToString()
+            If str4 = statuscheck.Text Then
+                statuscode = 2
+            Else
 
+            End If
+        Next
+        If statuscode = 2 Then
+            status.Visible = True
+            status.BackColor = Color.Yellow
+            status.Text = "User is provisioning..."
+        End If
     End Sub
 
     Private Sub statuscheck_TextChanged(sender As Object, e As EventArgs) Handles statuscheck.TextChanged
@@ -210,5 +257,9 @@ Public Class Form1
             MsgBox(total + " users have been added successfully.")
             dt.Clear()
         End If
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

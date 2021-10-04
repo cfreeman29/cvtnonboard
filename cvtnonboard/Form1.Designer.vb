@@ -60,6 +60,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.importing = New System.Windows.Forms.Label()
+        Me.status = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Credits.SuspendLayout()
@@ -176,6 +177,7 @@ Partial Class Form1
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.status)
         Me.GroupBox4.Controls.Add(Me.Label9)
         Me.GroupBox4.Controls.Add(Me.Label8)
         Me.GroupBox4.Controls.Add(Me.Button4)
@@ -435,6 +437,16 @@ Partial Class Form1
         Me.importing.Text = "Importing..."
         Me.importing.Visible = False
         '
+        'status
+        '
+        Me.status.AutoSize = True
+        Me.status.Location = New System.Drawing.Point(92, 68)
+        Me.status.Name = "status"
+        Me.status.Size = New System.Drawing.Size(35, 13)
+        Me.status.TabIndex = 5
+        Me.status.Text = "status"
+        Me.status.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -503,4 +515,5 @@ Partial Class Form1
     Friend WithEvents Label10 As Label
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents importing As Label
+    Friend WithEvents status As Label
 End Class
