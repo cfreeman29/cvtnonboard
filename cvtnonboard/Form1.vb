@@ -150,7 +150,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+    End Sub
+
+    Private Sub statuscheck_TextChanged(sender As Object, e As EventArgs) Handles statuscheck.TextChanged
 
     End Sub
 End Class
