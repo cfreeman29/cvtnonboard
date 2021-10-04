@@ -10,7 +10,7 @@ Public Class Form1
     Dim fName As String = ""
     Dim usernum As Integer
     Dim i As Integer
-    Dim masterpath As String = "C:\Users\cfree\Documents\master.csv"
+    Dim masterpath As String = System.Configuration.ConfigurationSettings.AppSettings("mastercsvpath")
     Dim TextLine As String = ""
     Dim SplitLine() As String
     Dim statuscode As Integer
